@@ -1,0 +1,88 @@
+﻿@model  crudwithjquery.Models.Employee
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<button type="button" class="btn btn-primary" id="btnemployee">
+    Add Employee
+</button>
+
+<table  class="table table-border">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Firtsname</th>
+            <th>LastName</th>
+            <th>Designation</th>
+            <th>CNIC</th>
+            <th>Address</th>
+            <th>Hired Date</th>
+            <th>Oprtion</th>
+        </tr>
+    </thead>
+    <tbody id="table_user">
+       
+</tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="model1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"  id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="studenteForm">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div >
+                        <input type="hidden" asp-for="EmpId"  id="EmployeeId" />
+                    </div>
+                    <div class="form-group">
+                        <label>FirstName</label>
+                        <input type="text" asp-for="FirstName"  placeholder="Enter firstname" class="form-control" id="fname" />
+                    </div>
+                    <div class="form-group">
+                        <label>LastName</label>
+                        <input type="text" asp-for="LastName"  placeholder="Enter lastname" class="form-control" id="lname" />
+                    </div>
+                    <div class="form-group">
+                        <label>Designation</label>
+                        <input type="text" asp-for="Designation"  placeholder="Enter Designation" class="form-control" id="deg" />
+                    </div>
+                    <div class="form-group">
+                        <label>CNIC</label>
+                        <input type="text" asp-for="CNIC"  placeholder="Enter CNIC" class="form-control" id="cn" />
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input type="text" asp-for="Address" placeholder="Enter Address" class="form-control" id="add" />
+                    </div>
+                    <div class="form-group">
+                        <label>Hire Date</label>
+                        <input type="datetime-local" asp-for="HireDate" placeholder="Enter Hire Date" class="form-control" id="hired" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-warning" style="display:none" onclick="updateemployee()" id="btnUpdate">Update</button>
+                <button type="button" class="btn btn-primary" onclick="submitStudent()" id="addemp">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/custom.js"></script>
+
